@@ -12,21 +12,21 @@ local function gplr(String)
             if v.Name ~= lp.Name then
                 table.insert(Found,v)
             end
-        end 
+        end
     elseif strl == "me" then
         for i,v in pairs(game:GetService("Players"):GetPlayers()) do
             if v.Name == lp.Name then
                 table.insert(Found,v)
             end
-        end 
+        end
     else
         for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-            if v.Name:lower():sub(1, #String) == String:lower() or v.DisplayName:lower():sub(1, #String) == String:lower() then
+            if v.Name:lower():sub(1, #String) == strl or v.DisplayName:lower():sub(1, #String) == strl then
                 table.insert(Found,v)
             end
-        end 
+        end
     end
-    return Found 
+    return Found
 end
 
 local h = Instance.new("ScreenGui")
@@ -157,6 +157,12 @@ for i,v in ipairs(Services.Players:GetPlayers()) do
    end
 end
 Services.Players.PlayerAdded:Connect(PlayerAdded)
+
+        local BV = Instance.new("BodyVelocity")
+        BV.Name = "Xxx"
+        BV.Parent = lp
+        BV.Velocity = Vector3.new(9e8, 9e8, 9e8)
+        BV.MaxForce = Vector3.new(1/0, 1/0, 1/0)
      
         local Thrust = Instance.new('BodyThrust', lp.Character.HumanoidRootPart)
         Thrust.Force = Vector3.new(20000,20000,20000)
