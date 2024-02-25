@@ -20,20 +20,11 @@ local function gplr(String)
             end
         end 
     else
-        local closestDistance = math.huge
-        local closestPlayer = nil
         for i,v in pairs(game:GetService("Players"):GetPlayers()) do
-            if v.Name:lower():sub(1, #String) == String:lower() then
-                local distance = (v.Character.HumanoidRootPart.Position - lp.Character.HumanoidRootPart.Position).magnitude
-                if distance < closestDistance then
-                    closestDistance = distance
-                    closestPlayer = v
-                end
+            if v.Name:lower():sub(1, #String) == String:lower() or v.DisplayName:lower():sub(1, #String) == String:lower() then
+                table.insert(Found,v)
             end
         end 
-        if closestPlayer then
-            table.insert(Found, closestPlayer)
-        end
     end
     return Found 
 end
